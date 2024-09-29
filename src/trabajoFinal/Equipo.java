@@ -1,60 +1,62 @@
 package trabajoFinal;
 
-public class Equipo {
-    private String nombre;
-    private String codigoDeEquipo;
-    private boolean isOperative;
-    private boolean isCheckedOut;
-    private String usuario;
+public abstract class Equipo {
+    private String serie;
+    private String marca;
+    private String modelo;
+    private boolean isCheckOut;
+    private Usuario usuario;
 
-
-    public Equipo(String nombre, String codigoDeEquipo, boolean isOperative, boolean isCheckedOut, String usuario) {
-        this.nombre = nombre;
-        this.codigoDeEquipo = codigoDeEquipo;
-        this.isOperative = isOperative;
-        this.isCheckedOut = isCheckedOut;
+    public Equipo(String serie, String marca, String modelo, boolean isCheckOut, Usuario usuario) {
+        this.serie = serie;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.isCheckOut = false;
         this.usuario = usuario;
     }
 
-    public String getNombre() {
-        return nombre;
+    public abstract String obtenerStatusEquipo();
+
+    public String getSerie() {
+        return serie;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setSerie(String serie) {
+        this.serie = serie;
     }
 
-    public String getCodigoDeEquipo() {
-        return codigoDeEquipo;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setCodigoDeEquipo(String codigoDeEquipo) {
-        this.codigoDeEquipo = codigoDeEquipo;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public boolean isOperative() {
-        return isOperative;
+    public String getModelo() {
+        return modelo;
     }
 
-    public void setOperative(boolean operative) {
-        isOperative = operative;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
-    public boolean isCheckedOut() {
-        return isCheckedOut;
+    public boolean isCheckOut() {
+        return isCheckOut;
     }
 
-    public void setCheckedOut(boolean checkedOut) {
-        isCheckedOut = checkedOut;
+    public void setCheckOut(boolean checkOut) {
+        isCheckOut = checkOut;
     }
 
-    public String getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-
 }
+
+
+
