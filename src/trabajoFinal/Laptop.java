@@ -8,9 +8,13 @@ public class Laptop extends Equipo{
         this.tamañoPantalla = tamañoPantalla;
     }
 
-    @Override
-    public String obtenerStatusEquipo() {
-        return "Laptop - Serie: " + getSerie() + ", Estado: " + (isCheckOut() ? "Asignado" : "Disponible");
+   @Override
+    public boolean sePuedePrestar(String modalidadDelUsuario) {
+        if (modalidadDelUsuario.equals("REMOTO")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public int getTamañoPantalla() {

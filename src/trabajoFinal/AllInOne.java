@@ -9,8 +9,12 @@ public class AllInOne extends Equipo{
     }
 
     @Override
-    public String obtenerStatusEquipo() {
-        return "All in One - Serie: " + getSerie() + ", Estado: " + (isCheckOut()? "Asignado" : "Disponible");
+    public boolean sePuedePrestar(String modalidadDelUsuario) {
+        if (modalidadDelUsuario.equals("HIBRIDO")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean isTienePantallaTouch() {

@@ -9,8 +9,12 @@ public class Cpu extends Equipo{
     }
 
     @Override
-    public String obtenerStatusEquipo() {
-        return "CPU - Serie: " + getSerie() + ", Estado: " + (isCheckOut()? "Asignado" :  "Disponible");
+    public boolean sePuedePrestar(String modalidadDelUsuario) {
+        if (modalidadDelUsuario.equals("PRESENCIAL")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String getProcesador() {
