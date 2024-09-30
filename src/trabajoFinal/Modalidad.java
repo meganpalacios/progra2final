@@ -1,10 +1,7 @@
 package trabajoFinal;
 
 public enum Modalidad {
-PRESENCIAL,
-REMOTO,
-HIBRIDO,
-
-
-
+    PRESENCIAL,
+    REMOTO,
+    HIBRIDO,
 }

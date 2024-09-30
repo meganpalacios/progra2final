@@ -1,23 +1,17 @@
 package trabajoFinal;
 
 public class Laptop extends Equipo{
-    private int tamañoPantalla;
-
-    public Laptop(String serie, String marca, String modelo, boolean isCheckOut, Usuario usuario, int tamañoPantalla) {
-        super(serie, marca, modelo, isCheckOut, usuario);
-        this.tamañoPantalla = tamañoPantalla;
+    public Laptop(String serie, String marca, String modelo) {
+        super(serie, marca, modelo);
     }
 
-    @Override
-    public String obtenerStatusEquipo() {
-        return "Laptop - Serie: " + getSerie() + ", Estado: " + (isCheckOut() ? "Asignado" : "Disponible");
+   @Override
+    public boolean sePuedePrestar(String modalidadDelUsuario) {
+        if (modalidadDelUsuario.equals("REMOTO")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public int getTamañoPantalla() {
-        return tamañoPantalla;
-    }
-
-    public void setTamañoPantalla(int tamañoPantalla) {
-        this.tamañoPantalla = tamañoPantalla;
-    }
 }
