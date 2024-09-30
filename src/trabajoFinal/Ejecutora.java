@@ -55,21 +55,27 @@ public class Ejecutora {
         AllInOne aio3 = new AllInOne("SN24680", "Lenovo", "IdeaCentre AIO 3");
         AllInOne aio4 = new AllInOne("SN13579", "Apple", "iMac 24-inch");
         AllInOne aio5 = new AllInOne("SN19283", "Acer", "Aspire C27");
-        GrupoTawa.registrarEquipo(laptop1);
-        GrupoTawa.registrarEquipo(laptop2);
-        GrupoTawa.registrarEquipo(laptop3);
-        GrupoTawa.registrarEquipo(laptop4);
-        GrupoTawa.registrarEquipo(laptop5);
-        GrupoTawa.registrarEquipo(cpu1);
-        GrupoTawa.registrarEquipo(cpu2);
-        GrupoTawa.registrarEquipo(cpu3);
-        GrupoTawa.registrarEquipo(cpu4);
-        GrupoTawa.registrarEquipo(cpu5);
-        GrupoTawa.registrarEquipo(aio1);
-        GrupoTawa.registrarEquipo(aio2);
-        GrupoTawa.registrarEquipo(aio3);
-        GrupoTawa.registrarEquipo(aio4);
-        GrupoTawa.registrarEquipo(aio5);
+        try {
+            GrupoTawa.registrarEquipo(laptop1);
+            GrupoTawa.registrarEquipo(laptop2);
+            GrupoTawa.registrarEquipo(laptop3);
+            GrupoTawa.registrarEquipo(laptop4);
+            GrupoTawa.registrarEquipo(laptop5);
+            GrupoTawa.registrarEquipo(cpu1);
+            GrupoTawa.registrarEquipo(cpu2);
+            GrupoTawa.registrarEquipo(cpu3);
+            GrupoTawa.registrarEquipo(cpu4);
+            GrupoTawa.registrarEquipo(cpu5);
+            GrupoTawa.registrarEquipo(aio1);
+            GrupoTawa.registrarEquipo(aio2);
+            GrupoTawa.registrarEquipo(aio3);
+            GrupoTawa.registrarEquipo(aio4);
+            GrupoTawa.registrarEquipo(aio5);
+            GrupoTawa.registrarEquipo(laptop1);
+        } catch (ExcepcionEmpresaChecked e) {
+            System.out.println(e.getMessage());
+        }
+
 
         int opcion;
 
@@ -98,13 +104,25 @@ public class Ejecutora {
 
                     if (tipo.equalsIgnoreCase("laptop")) {
                         Laptop nuevaLaptop = new Laptop(serie, marca, modelo);
-                        GrupoTawa.registrarEquipo(nuevaLaptop);
+                        try {
+                            GrupoTawa.registrarEquipo(nuevaLaptop);
+                        } catch (ExcepcionEmpresaChecked e) {
+                            System.out.println(e.getMessage());
+                        }
                     } else if (tipo.equalsIgnoreCase("cpu")) {
                         Cpu nuevaCpu = new Cpu(serie, marca, modelo);
-                        GrupoTawa.registrarEquipo(nuevaCpu);
+                        try {
+                            GrupoTawa.registrarEquipo(nuevaCpu);
+                        } catch (ExcepcionEmpresaChecked e) {
+                            System.out.println(e.getMessage());
+                        }
                     } else if (tipo.equalsIgnoreCase("aio") || tipo.equalsIgnoreCase("all in one") || tipo.equalsIgnoreCase("allinone")) {
                         AllInOne nuevoAllInOne = new AllInOne(serie, marca, modelo);
-                        GrupoTawa.registrarEquipo(nuevoAllInOne);
+                        try {
+                            GrupoTawa.registrarEquipo(nuevoAllInOne);
+                        } catch (ExcepcionEmpresaChecked e) {
+                            System.out.println(e.getMessage());
+                        }
                     }
                     break;
                 case 2:

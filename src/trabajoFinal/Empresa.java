@@ -13,8 +13,21 @@ public class Empresa {
     }
 
     // métodos relacionados a la Clase Equipo
-    public void registrarEquipo(Equipo equipo) {
-        inventario.add(equipo);
+    public void registrarEquipo(Equipo equipo) throws ExcepcionEmpresaChecked {
+        boolean encontrado = false;
+        String nuevaSerie = equipo.getSerie();
+        for (Equipo e : inventario) {
+            if (nuevaSerie.equals(e.getSerie())) {
+                encontrado = true;
+                break;
+            }
+        }
+        if (encontrado) {
+//            System.out.println("El DNI " + nuevoDNI + " ya está registrado.");
+            throw new ExcepcionEmpresaChecked("La serie del equipo " + nuevaSerie + " ya está registrada.");
+        } else {
+            inventario.add(equipo);
+        }
     }
     public void obtenerEquipoPorSerie(String serie) {
         // imprime todos los atributos de un equipo
