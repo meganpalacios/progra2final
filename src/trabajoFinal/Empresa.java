@@ -121,13 +121,18 @@ public class Empresa {
         }
     }
     public void desasignarEquipo(String codUsuario) {
+        boolean tieneEquipoAsignado = false;
         for (Equipo equipo : inventario) {
             // si el usuario en efecto tiene un equipo asignado
             if (equipo.getUsuario().equals(codUsuario)) {
+                tieneEquipoAsignado = true;
                 equipo.desasignar();
-            } else {
-                System.out.println("Error, este usuario no existe o no tiene equipos asignados");
+                System.out.println("Equipo liberado con éxito");
+                break;
             }
+        }
+        if (!tieneEquipoAsignado) {
+            System.out.println("Error, este usuario no existe o no tiene equipos asignados");
         }
     }
 }

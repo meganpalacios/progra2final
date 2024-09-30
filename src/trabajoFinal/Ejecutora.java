@@ -150,7 +150,7 @@ public class Ejecutora {
                         GrupoTawa.asignarEquipo(codUsuario);
                         break;
                     case 5:
-                        System.out.println("Ingrese el código de empleado");
+                        System.out.print("Ingrese el código de empleado");
                         String codDeUsuario = sc.next();
                         GrupoTawa.desasignarEquipo(codDeUsuario);
                         break;
