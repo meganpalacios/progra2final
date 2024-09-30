@@ -1,26 +1,20 @@
 package trabajoFinal;
 
 public class Empleado {
-    private String nombre;
-    private double codigoEmpleado;
-    private String correo;
-    private Modalidad modalidad;
+    private final String nombre;
+    private final String codigoEmpleado;
+    private final String correo;
+    private final Modalidad modalidad;
 
-    public Empleado(String nombre, double codigoEmpleado, String correo, Modalidad modalidad) {
+    public Empleado(String nombre, String codigoEmpleado, String correo, Modalidad modalidad) {
         this.nombre = nombre;
         this.codigoEmpleado = codigoEmpleado;
         this.correo = correo;
         this.modalidad = modalidad;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-    public double getCodigoEmpleado() {
+    public String getCodigoEmpleado() {
         return codigoEmpleado;
-    }
-    public String getCorreo() {
-        return correo;
     }
     public Modalidad getModalidad() {
         return modalidad;
