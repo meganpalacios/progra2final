@@ -1,5 +1,6 @@
 package trabajoFinal;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Ejecutora {
@@ -76,82 +77,96 @@ public class Ejecutora {
             System.out.println(e.getMessage());
         }
 
-
-        int opcion;
+        int opcion = 0;
 
         do {
-            System.out.println("\nMenu");
-            System.out.println("1. Agregar equipo al inventario");
-            System.out.println("2. Buscar equipo por serie");
-            System.out.println("3. Mostrar inventario");
-            System.out.println("4. Asignar equipo");
-            System.out.println("5. Desasignar equipo");
-            System.out.println("6. Mostrar equipos disponibles");
-            System.out.println("7. Salir");
-            System.out.print("Ingrese su opción: ");
-            opcion = sc.nextInt();
-            switch (opcion) {
-                case 1:
-                    System.out.print("Equipo que desea registrar (laptop / cpu / all in one): ");
-                    String tipo = sc.next();
-                    sc.nextLine(); // Limpiar el buffer del scanner
-                    System.out.print("Ingrese la serie del equipo: ");
-                    String serie = sc.nextLine();
-                    System.out.print("Ingrese la marca del equipo: ");
-                    String marca = sc.nextLine();
-                    System.out.print("Ingrese el modelo del equipo: ");
-                    String modelo = sc.nextLine();
+            try {
+                System.out.println("\nMenu");
+                System.out.println("1. Agregar equipo al inventario");
+                System.out.println("2. Buscar equipo por serie");
+                System.out.println("3. Mostrar inventario");
+                System.out.println("4. Asignar equipo");
+                System.out.println("5. Desasignar equipo");
+                System.out.println("6. Mostrar equipos disponibles");
+                System.out.println("7. Salir");
+                System.out.print("Ingrese su opción: ");
+                opcion = sc.nextInt();
+                switch (opcion) {
+                    case 1:
+                        System.out.print("Equipo que desea registrar (laptop / cpu / all in one): ");
+                        String tipo = sc.next();
 
-                    if (tipo.equalsIgnoreCase("laptop")) {
-                        Laptop nuevaLaptop = new Laptop(serie, marca, modelo);
                         try {
-                            GrupoTawa.registrarEquipo(nuevaLaptop);
-                        } catch (ExcepcionEmpresaChecked e) {
-                            System.out.println(e.getMessage());
+                            if (tipo.equalsIgnoreCase("laptop") || tipo.equalsIgnoreCase("cpu") || tipo.equalsIgnoreCase("aio") || tipo.equalsIgnoreCase("all in one") || tipo.equalsIgnoreCase("allinone")) {
+                                sc.nextLine(); // Limpiar el buffer del scanner
+                                System.out.print("Ingrese la serie del equipo: ");
+                                String serie = sc.nextLine();
+                                System.out.print("Ingrese la marca del equipo: ");
+                                String marca = sc.nextLine();
+                                System.out.print("Ingrese el modelo del equipo: ");
+                                String modelo = sc.nextLine();
+                                if (tipo.equalsIgnoreCase("laptop")) {
+                                    Laptop nuevaLaptop = new Laptop(serie, marca, modelo);
+                                    try {
+                                        GrupoTawa.registrarEquipo(nuevaLaptop);
+                                    } catch (ExcepcionEmpresaChecked e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                } else if (tipo.equalsIgnoreCase("cpu")) {
+                                    Cpu nuevaCpu = new Cpu(serie, marca, modelo);
+                                    try {
+                                        GrupoTawa.registrarEquipo(nuevaCpu);
+                                    } catch (ExcepcionEmpresaChecked e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                } else if (tipo.equalsIgnoreCase("aio") || tipo.equalsIgnoreCase("all in one") || tipo.equalsIgnoreCase("allinone")) {
+                                    AllInOne nuevoAllInOne = new AllInOne(serie, marca, modelo);
+                                    try {
+                                        GrupoTawa.registrarEquipo(nuevoAllInOne);
+                                    } catch (ExcepcionEmpresaChecked e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                }
+                            } else {
+                                // Si el tipo no es válido, lanzamos una excepción.
+                                throw new IllegalArgumentException("Tipo de equipo no válido: " + tipo);
+                            }
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Error: " + e.getMessage());
                         }
-                    } else if (tipo.equalsIgnoreCase("cpu")) {
-                        Cpu nuevaCpu = new Cpu(serie, marca, modelo);
-                        try {
-                            GrupoTawa.registrarEquipo(nuevaCpu);
-                        } catch (ExcepcionEmpresaChecked e) {
-                            System.out.println(e.getMessage());
-                        }
-                    } else if (tipo.equalsIgnoreCase("aio") || tipo.equalsIgnoreCase("all in one") || tipo.equalsIgnoreCase("allinone")) {
-                        AllInOne nuevoAllInOne = new AllInOne(serie, marca, modelo);
-                        try {
-                            GrupoTawa.registrarEquipo(nuevoAllInOne);
-                        } catch (ExcepcionEmpresaChecked e) {
-                            System.out.println(e.getMessage());
-                        }
-                    }
-                    break;
-                case 2:
-                    System.out.print("Ingrese la serie del equipo a buscar: ");
-                    String serieABuscar = sc.next();
-                    GrupoTawa.obtenerEquipoPorSerie(serieABuscar);
-                    break;
-                case 3:
-                    GrupoTawa.obtenerInventario();
-                    break;
-                case 4:
-                    System.out.print("Ingrese el código de usuario a quien quiere asignar un equipo: ");
-                    String codUsuario = sc.next();
-                    GrupoTawa.asignarEquipo(codUsuario);
-                    break;
-                case 5:
-                    System.out.println("Ingrese el código de empleado");
-                    String codDeUsuario = sc.next();
-                    GrupoTawa.desasignarEquipo(codDeUsuario);
-                    break;
-                case 6:
-                    System.out.println("Buscando equipos disponibles...");
-                    GrupoTawa.obtenerEquiposDisponibles();
-                    break;
-                case 7:
-                    System.out.println("Saliendo del programa...");
-                    break;
-                default:
-                    System.out.println("Opción no válida");
+
+                        break;
+                    case 2:
+                        System.out.print("Ingrese la serie del equipo a buscar: ");
+                        String serieABuscar = sc.next();
+                        GrupoTawa.obtenerEquipoPorSerie(serieABuscar);
+                        break;
+                    case 3:
+                        GrupoTawa.obtenerInventario();
+                        break;
+                    case 4:
+                        System.out.print("Ingrese el código de usuario a quien quiere asignar un equipo: ");
+                        String codUsuario = sc.next();
+                        GrupoTawa.asignarEquipo(codUsuario);
+                        break;
+                    case 5:
+                        System.out.println("Ingrese el código de empleado");
+                        String codDeUsuario = sc.next();
+                        GrupoTawa.desasignarEquipo(codDeUsuario);
+                        break;
+                    case 6:
+                        System.out.println("Buscando equipos disponibles...");
+                        GrupoTawa.obtenerEquiposDisponibles();
+                        break;
+                    case 7:
+                        System.out.println("Saliendo del programa...");
+                        break;
+                    default:
+                        System.out.println("Opción no válida");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Entrada no válida. Por favor, ingrese un número entero.");
+                sc.next(); // Limpiar el buffer para evitar un loop infinito
             }
         } while (opcion != 7);
     }

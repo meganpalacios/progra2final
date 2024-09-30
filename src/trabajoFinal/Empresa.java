@@ -23,7 +23,6 @@ public class Empresa {
             }
         }
         if (encontrado) {
-//            System.out.println("El DNI " + nuevoDNI + " ya está registrado.");
             throw new ExcepcionEmpresaChecked("La serie del equipo " + nuevaSerie + " ya está registrada.");
         } else {
             inventario.add(equipo);
