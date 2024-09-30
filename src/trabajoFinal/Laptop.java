@@ -1,11 +1,8 @@
 package trabajoFinal;
 
 public class Laptop extends Equipo{
-    private int tamañoPantalla;
-
-    public Laptop(String serie, String marca, String modelo, boolean isCheckOut, Usuario usuario, int tamañoPantalla) {
-        super(serie, marca, modelo, isCheckOut, usuario);
-        this.tamañoPantalla = tamañoPantalla;
+    public Laptop(String serie, String marca, String modelo) {
+        super(serie, marca, modelo);
     }
 
    @Override
@@ -17,11 +14,4 @@ public class Laptop extends Equipo{
         }
     }
 
-    public int getTamañoPantalla() {
-        return tamañoPantalla;
-    }
-
-    public void setTamañoPantalla(int tamañoPantalla) {
-        this.tamañoPantalla = tamañoPantalla;
-    }
 }
